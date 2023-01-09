@@ -27,19 +27,17 @@ public class Manager : MonoBehaviour
     }
     public void SpawnBaby()
     {
-<<<<<<< Updated upstream:Assets/Scripts/Manager.cs
         GameObject gO = (GameObject)Instantiate(Baby, SpawnPoint.position, Quaternion.identity);
         Crawl crawl = gO.GetComponent<Crawl>();
         crawl.moveSpot = BabyMove;
         statText.text = "Int: " + gO.GetComponent<BabyManager>().intelligence + " / " + "Cha: " + gO.GetComponent<BabyManager>().charisma + " / " + "Health: " + gO.GetComponent<BabyManager>().health;
         wBaby.SetActive(true);
-=======
-        GameObject gO = Instantiate(Baby, SpawnPoint);
-        statText.text = "Int: " + gO.GetComponent<BabyManager>().intelligence + " / " + 
-            "Cha: " + gO.GetComponent<BabyManager>().charisma + " / " + 
-            "Health: " + gO.GetComponent<BabyManager>().health;
-        window.SetActive(true);
->>>>>>> Stashed changes:Assets/Scripts/Ui.cs
+
+        //GameObject gO = Instantiate(Baby, SpawnPoint);
+        //statText.text = "Int: " + gO.GetComponent<BabyManager>().intelligence + " / " + 
+        //    "Cha: " + gO.GetComponent<BabyManager>().charisma + " / " + 
+        //    "Health: " + gO.GetComponent<BabyManager>().health;
+        //window.SetActive(true);
     }
     public void CloseWindow()
     {
