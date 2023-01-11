@@ -1,50 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Manager : MonoBehaviour
 {
-    public GameObject Baby;
-    public Transform SpawnPoint;
-    public Transform[] BabyMove;
+    public Baby baby;
+    public GameObject wShop;
+    public GameObject wFood;
+    public GameObject wHealth;
+    public GameObject wToy;
+    public GameObject wSpecials;
 
-    public GameObject wBaby;
     public GameObject wRandom;
     public GameObject wJob;
-    public GameObject wShop;
-    public TextMeshProUGUI statText;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    public void SpawnBaby()
-    {
-        GameObject gO = (GameObject)Instantiate(Baby, SpawnPoint.position, Quaternion.identity);
-        Crawl crawl = gO.GetComponent<Crawl>();
-        crawl.moveSpot = BabyMove;
-        statText.text = "Int: " + gO.GetComponent<BabyManager>().intelligence + " / " + "Cha: " + gO.GetComponent<BabyManager>().charisma + " / " + "Health: " + gO.GetComponent<BabyManager>().health;
-        wBaby.SetActive(true);
-
-        //GameObject gO = Instantiate(Baby, SpawnPoint);
-        //statText.text = "Int: " + gO.GetComponent<BabyManager>().intelligence + " / " + 
-        //    "Cha: " + gO.GetComponent<BabyManager>().charisma + " / " + 
-        //    "Health: " + gO.GetComponent<BabyManager>().health;
-        //window.SetActive(true);
-    }
     public void CloseWindow()
     {
-        wBaby.SetActive(false);
-        wRandom.SetActive(false);
-        wJob.SetActive(false);
         wShop.SetActive(false);
+        wFood.SetActive(false);
+        wHealth.SetActive(false);
+        wToy.SetActive(false);
+        wSpecials.SetActive(false);
+        wRandom.SetActive(false);
+        wJob.SetActive(false); 
     }
     public void LeftButton()
     {
@@ -57,7 +39,63 @@ public class Manager : MonoBehaviour
     public void Shop()
     {
         wShop.SetActive(true);
+        CheckShop();
     }
-
-
+    void CheckShop()
+    {
+        Button btn = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+        string btnName = btn.GetComponentInChildren<TextMeshProUGUI>().text;
+        if (btnName == "Food") 
+        {
+            wFood.SetActive(true);
+            wHealth.SetActive(false);
+            wToy.SetActive(false);
+            wSpecials.SetActive(false);
+        }
+        else if (btnName == "Health")
+        {
+            wFood.SetActive(false);
+            wHealth.SetActive(true);
+            wToy.SetActive(false);
+            wSpecials.SetActive(false);
+        }
+        else if (btnName == "Toy")
+        {
+            wFood.SetActive(false);
+            wHealth.SetActive(false);
+            wToy.SetActive(true);
+            wSpecials.SetActive(false);
+        }
+        else if (btnName == "Specials")
+        {
+            wFood.SetActive(false);
+            wHealth.SetActive(false);
+            wToy.SetActive(false);
+            wSpecials.SetActive(true);
+        }
+    }
+    public void hp()
+    {
+        if (baby.health < 5)
+        {
+            baby.healthUI[4 - baby.health].SetActive(true);
+            baby.health++;
+        }
+    }
+    public void hg()
+    {
+        if (baby.hunger < 5)
+        {
+            baby.hungerUI[4 - baby.hunger].SetActive(true);
+            baby.hunger++;
+        }
+    }
+    public void hy()
+    {
+        if (baby.happiness < 5)
+        {
+            baby.happinessUI[4 - baby.happiness].SetActive(true);
+            baby.happiness++;
+        }
+    }
 }
