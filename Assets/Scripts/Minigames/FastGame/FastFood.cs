@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 
 public class FastFood : MonoBehaviour
 {
+    public Customer customer;
     Vector3 mousePosition;
     Vector3 ogPos;
 
@@ -27,10 +28,10 @@ public class FastFood : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == gameObject.name)
+        if (collision.tag == gameObject.tag)
         {
-            collision.gameObject.SetActive(false);
-            transform.position = ogPos;
+            Destroy(collision.gameObject);
+            customer.served++;
         }
     }
 }

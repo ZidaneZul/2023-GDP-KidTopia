@@ -7,7 +7,7 @@ public class Timer : MonoBehaviour
 {
     public TextMeshProUGUI timer;
     public float time;
-    public bool timerOn;
+    public static bool timerOn;
     public GameObject wFinish;
 
     private void Start()

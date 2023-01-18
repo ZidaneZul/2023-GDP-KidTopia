@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Baby : MonoBehaviour
 {
@@ -11,43 +12,57 @@ public class Baby : MonoBehaviour
     public int health;
     public int hunger;
     public int happiness;
+    public Sprite sHappy;
+    public Sprite sNeutral;
+    public Sprite sSad;
+    public Sprite sCrying;
 
-    private float hpt = 20;
+    private Image baby;
+
+    private float rdm = 75;
     private float hgt = 15;
     private float hyt = 10;
 
     // Start is called before the first frame update
     void Start()
     {
+        baby = gameObject.GetComponent<Image>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        HealthTick();
+        RandomTick();
         HungerTick();
         HappinessTick();
-    }
-
-    void HealthTick()
-    {  
-        if (hpt > 0)
+        if (happiness >= 5) 
         {
-            hpt -= Time.deltaTime;
-            Debug.Log(hpt);
+            baby.sprite = sHappy;
         }
-        else 
+        else if (happiness >= 3)
         {
-            hpt = 20;
-            if (health > 0)
-            {
-                health--;
-                healthUI[4 - health].SetActive(false);
-            } 
-            else
-            {
-                lose.SetActive(true);
-            }
+            baby.sprite = sNeutral;
+        }
+        else if (happiness == 2)
+        {
+            baby.sprite = sSad;
+        }
+        else
+        {
+            baby.sprite = sCrying;
+        }
+    }
+    void RandomTick()
+    {
+        if (rdm > 0)
+        {
+            rdm -= Time.deltaTime;
+            Debug.Log(rdm);
+        }
+        else
+        {
+            rdm = 75;
+
         }
     }
     void HungerTick()

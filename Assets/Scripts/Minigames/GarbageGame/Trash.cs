@@ -20,6 +20,7 @@ public class Trash : MonoBehaviour
         if(collision.tag == "Bin")
         {
             Destroy(gameObject);
+            TrashCan.trashAmt--;
         }
     }
 }

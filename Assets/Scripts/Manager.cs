@@ -1,9 +1,11 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Manager : MonoBehaviour
@@ -14,10 +16,21 @@ public class Manager : MonoBehaviour
     public GameObject wHealth;
     public GameObject wToy;
     public GameObject wSpecials;
+    public TextMeshProUGUI moneyTxt;
+    public static int money;
+    public static bool salaryDown;
 
     public GameObject wRandom;
     public GameObject wJob;
 
+    private void Start()
+    {
+        money = 100;
+    }
+    private void Update()
+    {
+        moneyTxt.text = "$" + money.ToString();
+    }
     public void CloseWindow()
     {
         wShop.SetActive(false);
@@ -27,6 +40,10 @@ public class Manager : MonoBehaviour
         wSpecials.SetActive(false);
         wRandom.SetActive(false);
         wJob.SetActive(false); 
+    }
+    public void work()
+    {
+        wJob.SetActive(true);
     }
     public void LeftButton()
     {
@@ -74,7 +91,7 @@ public class Manager : MonoBehaviour
             wSpecials.SetActive(true);
         }
     }
-    public void hp()
+    void hp()
     {
         if (baby.health < 5)
         {
@@ -82,7 +99,7 @@ public class Manager : MonoBehaviour
             baby.health++;
         }
     }
-    public void hg()
+    void hg()
     {
         if (baby.hunger < 5)
         {
@@ -90,12 +107,121 @@ public class Manager : MonoBehaviour
             baby.hunger++;
         }
     }
-    public void hy()
+    void hy()
     {
         if (baby.happiness < 5)
         {
             baby.happinessUI[4 - baby.happiness].SetActive(true);
             baby.happiness++;
         }
+    }
+    public void Play()
+    {
+        baby.happinessUI[0].SetActive(true);
+        baby.happinessUI[1].SetActive(true);
+        baby.happinessUI[2].SetActive(true);
+        baby.happinessUI[3].SetActive(true);
+        baby.happinessUI[4].SetActive(true);
+        baby.happiness = 5;
+        salaryDown = true;
+    }
+    public void cracker()
+    {
+        Button btn = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+        string sCost = btn.GetComponentInChildren<TextMeshProUGUI>().text;
+        int cost = int.Parse(sCost.Substring(1));
+        if (money >= cost)
+        {
+            hg();
+        }
+    }
+    public void bbFood()
+    {
+        Button btn = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+        string sCost = btn.GetComponentInChildren<TextMeshProUGUI>().text;
+        int cost = int.Parse(sCost.Substring(1));
+        if (money >= cost)
+        {
+            hg();
+            hg();
+        }
+    }
+    public void bbFormula()
+    {
+        Button btn = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+        string sCost = btn.GetComponentInChildren<TextMeshProUGUI>().text;
+        int cost = int.Parse(sCost.Substring(1));
+        if (money >= cost)
+        {
+            hg();
+            hg();
+            hg();
+            hg();
+            hg();
+        }
+    }
+    public void panadol()
+    {
+        Button btn = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+        string sCost = btn.GetComponentInChildren<TextMeshProUGUI>().text;
+        int cost = int.Parse(sCost.Substring(1));
+        if (money >= cost)
+        {
+            hp();
+        }
+    }
+    public void dctrConsul()
+    {
+        Button btn = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+        string sCost = btn.GetComponentInChildren<TextMeshProUGUI>().text;
+        int cost = int.Parse(sCost.Substring(1));
+        if (money >= cost)
+        {
+            hp();
+            hp();
+        }
+    }
+    public void checkUp()
+    {
+        Button btn = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+        string sCost = btn.GetComponentInChildren<TextMeshProUGUI>().text;
+        int cost = int.Parse(sCost.Substring(1));
+        if (money >= cost)
+        {
+            hp();
+            hp();
+            hp();
+            hp();
+            hp();
+        }
+    }
+    public void paddle()
+    {
+        Button btn = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+        string sCost = btn.GetComponentInChildren<TextMeshProUGUI>().text;
+        int cost = int.Parse(sCost.Substring(1));
+        if (money >= cost)
+        {
+            hy();
+        }
+    }
+    public void plushie()
+    {
+        Button btn = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+        string sCost = btn.GetComponentInChildren<TextMeshProUGUI>().text;
+        int cost = int.Parse(sCost.Substring(1));
+        if (money >= cost)
+        {
+            hy();
+            hy();
+        }
+    }
+    public void ToGarbage()
+    {
+        SceneManager.LoadScene("GarbageMan");
+    }
+    public void ToFastFood()
+    {
+        SceneManager.LoadScene("FastFood");
     }
 }

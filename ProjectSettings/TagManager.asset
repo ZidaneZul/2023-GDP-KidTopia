@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bin
+  - Burg
+  - Fry
+  - Drik
   layers:
   - Default
   - TransparentFX
