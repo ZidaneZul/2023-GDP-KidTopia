@@ -25,7 +25,7 @@ public class Manager : MonoBehaviour
 
     private void Start()
     {
-        money = 100;
+        money = 1000;
     }
     private void Update()
     {
@@ -132,6 +132,7 @@ public class Manager : MonoBehaviour
         int cost = int.Parse(sCost.Substring(1));
         if (money >= cost)
         {
+            money -= cost;
             hg();
         }
     }
@@ -142,6 +143,7 @@ public class Manager : MonoBehaviour
         int cost = int.Parse(sCost.Substring(1));
         if (money >= cost)
         {
+            money -= cost;
             hg();
             hg();
         }
@@ -153,6 +155,7 @@ public class Manager : MonoBehaviour
         int cost = int.Parse(sCost.Substring(1));
         if (money >= cost)
         {
+            money -= cost;
             hg();
             hg();
             hg();
@@ -167,6 +170,7 @@ public class Manager : MonoBehaviour
         int cost = int.Parse(sCost.Substring(1));
         if (money >= cost)
         {
+            money -= cost;
             hp();
         }
     }
@@ -177,6 +181,7 @@ public class Manager : MonoBehaviour
         int cost = int.Parse(sCost.Substring(1));
         if (money >= cost)
         {
+            money -= cost;
             hp();
             hp();
         }
@@ -188,6 +193,7 @@ public class Manager : MonoBehaviour
         int cost = int.Parse(sCost.Substring(1));
         if (money >= cost)
         {
+            money -= cost;
             hp();
             hp();
             hp();
@@ -202,6 +208,7 @@ public class Manager : MonoBehaviour
         int cost = int.Parse(sCost.Substring(1));
         if (money >= cost)
         {
+            money -= cost;
             hy();
         }
     }
@@ -212,6 +219,7 @@ public class Manager : MonoBehaviour
         int cost = int.Parse(sCost.Substring(1));
         if (money >= cost)
         {
+            money -= cost;
             hy();
             hy();
         }
