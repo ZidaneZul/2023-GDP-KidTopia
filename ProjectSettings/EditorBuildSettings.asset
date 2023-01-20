@@ -5,10 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 7cdf3e0e4b1bda141a8b1192b7560cf2
   - enabled: 1
     path: Assets/Scenes/Reworked.unity
     guid: 9cc68007323e5294cb91af1e3a984407
+  - enabled: 1
+    path: Assets/Scenes/GarbageMan.unity
+    guid: 1f78feda73d9ef24cbe84e3b15f6a0b2
+  - enabled: 1
+    path: Assets/Scenes/FastFood.unity
+    guid: a2226a884a3bc8d4a9bf41daa14b91bc
   m_configObjects: {}

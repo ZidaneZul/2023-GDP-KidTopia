@@ -5,10 +5,12 @@ using UnityEngine.UI;
 
 public class Baby : MonoBehaviour
 {
+    public RandomEvents randomEvent;
     public GameObject[] healthUI;
     public GameObject[] hungerUI;
     public GameObject[] happinessUI;
     public GameObject lose;
+    public GameObject rdmUI;
     public int health;
     public int hunger;
     public int happiness;
@@ -19,7 +21,7 @@ public class Baby : MonoBehaviour
 
     private Image baby;
 
-    private float rdm = 75;
+    private float rdm = 60;
     private float hgt = 15;
     private float hyt = 10;
 
@@ -61,8 +63,10 @@ public class Baby : MonoBehaviour
         }
         else
         {
-            rdm = 75;
-
+            rdm = 60;
+            rdmUI.SetActive(true);
+            Time.timeScale = 0;
+            randomEvent.RdmEvent();
         }
     }
     void HungerTick()

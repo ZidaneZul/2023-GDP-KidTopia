@@ -17,16 +17,12 @@ public class Manager : MonoBehaviour
     public GameObject wToy;
     public GameObject wSpecials;
     public TextMeshProUGUI moneyTxt;
-    public static int money;
+    public static int money = 100;
     public static bool salaryDown;
 
     public GameObject wRandom;
     public GameObject wJob;
 
-    private void Start()
-    {
-        money = 1000;
-    }
     private void Update()
     {
         moneyTxt.text = "$" + money.ToString();
@@ -44,14 +40,6 @@ public class Manager : MonoBehaviour
     public void work()
     {
         wJob.SetActive(true);
-    }
-    public void LeftButton()
-    {
-        wRandom.SetActive(false);
-    }
-    public void RightButton()
-    {
-        wRandom.SetActive(false);
     }
     public void Shop()
     {
