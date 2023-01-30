@@ -25,7 +25,7 @@ public class TrashCan : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (done == 1)
+        if (done == 2)
         {
             if (Manager.salaryDown)
             {

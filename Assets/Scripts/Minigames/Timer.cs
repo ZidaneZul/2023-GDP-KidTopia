@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
+    public MinigameUI minigameUI;
     public TextMeshProUGUI timer;
     public float time;
     public static bool timerOn;
@@ -30,6 +31,7 @@ public class Timer : MonoBehaviour
                 timer.text = Mathf.RoundToInt(time).ToString();
                 timerOn = false;
                 wFinish.SetActive(true);
+                minigameUI.earn = 0;
             }
         }
     }

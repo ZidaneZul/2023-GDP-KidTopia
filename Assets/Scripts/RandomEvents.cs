@@ -50,6 +50,10 @@ public class RandomEvents : MonoBehaviour
             baby.healthUI[4 - baby.health].SetActive(false);
             gameObject.SetActive(false);
         }
+        else 
+        {
+            gameObject.SetActive(false);
+        }
         Time.timeScale= 1;
     }
 }

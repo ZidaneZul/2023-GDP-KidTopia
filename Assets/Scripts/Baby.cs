@@ -21,7 +21,7 @@ public class Baby : MonoBehaviour
 
     private Image baby;
 
-    private float rdm = 60;
+    private float rdm = 20;
     private float hgt = 15;
     private float hyt = 10;
 
@@ -63,7 +63,7 @@ public class Baby : MonoBehaviour
         }
         else
         {
-            rdm = 60;
+            rdm = 20;
             rdmUI.SetActive(true);
             Time.timeScale = 0;
             randomEvent.RdmEvent();
