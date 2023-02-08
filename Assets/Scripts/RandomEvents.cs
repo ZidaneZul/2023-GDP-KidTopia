@@ -48,8 +48,8 @@ public class RandomEvents : MonoBehaviour
         string btnName = btn.GetComponentInChildren<TextMeshProUGUI>().text;
         if (btnName != events[rdmEv, 1])
         {
-            baby.health--;
-            baby.healthUI[4 - baby.health].SetActive(false);
+            Baby.health--;
+            baby.healthUI[4 - Baby.health].SetActive(false);
             randomPanel.SetActive(false);
             pickedPanel.SetActive(true);
             Time.timeScale = 1;

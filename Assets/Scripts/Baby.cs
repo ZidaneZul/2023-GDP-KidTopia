@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,9 +9,9 @@ public class Baby : MonoBehaviour
     public GameObject[] happinessUI;
     public GameObject lose;
     public GameObject rdmUI;
-    public int health;
-    public int hunger;
-    public int happiness;
+    public static int health;
+    public static int hunger;
+    public static int happiness;
     public Sprite sHappy;
     public Sprite sNeutral;
     public Sprite sSad;
@@ -35,24 +33,11 @@ public class Baby : MonoBehaviour
     void Update()
     {
         RandomTick();
+        HealthCheck();
         HungerTick();
+        HungerCheck();
         HappinessTick();
-        if (happiness >= 5) 
-        {
-            baby.sprite = sHappy;
-        }
-        else if (happiness >= 3)
-        {
-            baby.sprite = sNeutral;
-        }
-        else if (happiness == 2)
-        {
-            baby.sprite = sSad;
-        }
-        else
-        {
-            baby.sprite = sCrying;
-        }
+        HappinessCheck();
     }
     void RandomTick()
     {
@@ -82,7 +67,7 @@ public class Baby : MonoBehaviour
             if (hunger > 0)
             {
                 hunger--;
-                hungerUI[4 - hunger].SetActive(false);
+                
             }
             else
             {
@@ -109,6 +94,165 @@ public class Baby : MonoBehaviour
             {
                 lose.SetActive(true);
             }
+        }
+    }
+    void HungerCheck()
+    {
+        if (hunger == 5)
+        {
+            hungerUI[0].SetActive(true);
+            hungerUI[1].SetActive(true);
+            hungerUI[2].SetActive(true);
+            hungerUI[3].SetActive(true);
+            hungerUI[4].SetActive(true);
+        }
+        else if (hunger == 4)
+        {
+            hungerUI[0].SetActive(false);
+            hungerUI[1].SetActive(true);
+            hungerUI[2].SetActive(true);
+            hungerUI[3].SetActive(true);
+            hungerUI[4].SetActive(true);
+        }
+        else if (hunger == 3)
+        {
+            hungerUI[0].SetActive(false);
+            hungerUI[1].SetActive(false);
+            hungerUI[2].SetActive(true);
+            hungerUI[3].SetActive(true);
+            hungerUI[4].SetActive(true);
+        }
+        else if (hunger == 2)
+        {
+            hungerUI[0].SetActive(false);
+            hungerUI[1].SetActive(false);
+            hungerUI[2].SetActive(false);
+            hungerUI[3].SetActive(true);
+            hungerUI[4].SetActive(true);
+        }
+        else if (hunger == 1)
+        {
+            hungerUI[0].SetActive(false);
+            hungerUI[1].SetActive(false);
+            hungerUI[2].SetActive(false);
+            hungerUI[3].SetActive(false);
+            hungerUI[4].SetActive(true);
+        }
+        else
+        {
+            hungerUI[0].SetActive(false);
+            hungerUI[1].SetActive(false);
+            hungerUI[2].SetActive(false);
+            hungerUI[3].SetActive(false);
+            hungerUI[4].SetActive(false);
+        }
+    }
+    void HealthCheck()
+    {
+        if (health == 5)
+        {
+            healthUI[0].SetActive(true);
+            healthUI[1].SetActive(true);
+            healthUI[2].SetActive(true);
+            healthUI[3].SetActive(true);
+            healthUI[4].SetActive(true);
+        }
+        else if (health == 4)
+        {
+            healthUI[0].SetActive(false);
+            healthUI[1].SetActive(true);
+            healthUI[2].SetActive(true);
+            healthUI[3].SetActive(true);
+            healthUI[4].SetActive(true);
+        }
+        else if (health == 3)
+        {
+            healthUI[0].SetActive(false);
+            healthUI[1].SetActive(false);
+            healthUI[2].SetActive(true);
+            healthUI[3].SetActive(true);
+            healthUI[4].SetActive(true);
+        }
+        else if (health == 2)
+        {
+            healthUI[0].SetActive(false);
+            healthUI[1].SetActive(false);
+            healthUI[2].SetActive(false);
+            healthUI[3].SetActive(true);
+            healthUI[4].SetActive(true);
+        }
+        else if (health == 1)
+        {
+            healthUI[0].SetActive(false);
+            healthUI[1].SetActive(false);
+            healthUI[2].SetActive(false);
+            healthUI[3].SetActive(false);
+            healthUI[4].SetActive(true);
+        }
+        else
+        {
+            healthUI[0].SetActive(false);
+            healthUI[1].SetActive(false);
+            healthUI[2].SetActive(false);
+            healthUI[3].SetActive(false);
+            healthUI[4].SetActive(false);
+        }
+    }
+    void HappinessCheck()
+    {
+        if (happiness == 5)
+        {
+            baby.sprite = sHappy;
+            happinessUI[0].SetActive(true);
+            happinessUI[1].SetActive(true);
+            happinessUI[2].SetActive(true);
+            happinessUI[3].SetActive(true);
+            happinessUI[4].SetActive(true);
+        }
+        else if (happiness == 4)
+        {
+            baby.sprite = sHappy;
+            happinessUI[0].SetActive(false);
+            happinessUI[1].SetActive(true);
+            happinessUI[2].SetActive(true);
+            happinessUI[3].SetActive(true);
+            happinessUI[4].SetActive(true);
+        }
+        else if (happiness == 3)
+        {
+            baby.sprite = sNeutral;
+            happinessUI[0].SetActive(false);
+            happinessUI[1].SetActive(false);
+            happinessUI[2].SetActive(true);
+            happinessUI[3].SetActive(true);
+            happinessUI[4].SetActive(true);
+        }
+        else if (happiness == 2)
+        {
+            baby.sprite = sSad;
+            happinessUI[0].SetActive(false);
+            happinessUI[1].SetActive(false);
+            happinessUI[2].SetActive(false);
+            happinessUI[3].SetActive(true);
+            happinessUI[4].SetActive(true);
+        }
+        else if (happiness == 1)
+        {
+            baby.sprite = sCrying;
+            happinessUI[0].SetActive(false);
+            happinessUI[1].SetActive(false);
+            happinessUI[2].SetActive(false);
+            happinessUI[3].SetActive(false);
+            happinessUI[4].SetActive(true);
+        }   
+        else
+        {
+            baby.sprite = sCrying;
+            happinessUI[0].SetActive(false);
+            happinessUI[1].SetActive(false);
+            happinessUI[2].SetActive(false);
+            happinessUI[3].SetActive(false);
+            happinessUI[4].SetActive(false);
         }
     }
 }

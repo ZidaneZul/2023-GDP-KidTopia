@@ -87,26 +87,26 @@ public class Manager : MonoBehaviour
     }
     void hp()
     {
-        if (baby.health < 5)
+        if (Baby.health < 5)
         {
-            baby.healthUI[4 - baby.health].SetActive(true);
-            baby.health++;
+            baby.healthUI[4 - Baby.health].SetActive(true);
+            Baby.health++;
         }
     }
     void hg()
     {
-        if (baby.hunger < 5)
+        if (Baby.hunger < 5)
         {
-            baby.hungerUI[4 - baby.hunger].SetActive(true);
-            baby.hunger++;
+            baby.hungerUI[4 - Baby.hunger].SetActive(true);
+            Baby.hunger++;
         }
     }
     void hy()
     {
-        if (baby.happiness < 5)
+        if (Baby.happiness < 5)
         {
-            baby.happinessUI[4 - baby.happiness].SetActive(true);
-            baby.happiness++;
+            baby.happinessUI[4 - Baby.happiness].SetActive(true);
+            Baby.happiness++;
         }
     }
     public void Play()
@@ -116,7 +116,7 @@ public class Manager : MonoBehaviour
         baby.happinessUI[2].SetActive(true);
         baby.happinessUI[3].SetActive(true);
         baby.happinessUI[4].SetActive(true);
-        baby.happiness = 5;
+        Baby.happiness = 5;
         salaryDown = true;
         wConfirm.SetActive(true);
         plusTxt.text = "Baby is happy!";
@@ -257,6 +257,9 @@ public class Manager : MonoBehaviour
 
     public void Restart()
     {
+        Baby.health = 5;
+        Baby.hunger = 5;
+        Baby.happiness = 5;
         SceneManager.LoadScene("Reworked");
     }
 
