@@ -59,7 +59,7 @@ public class Baby : MonoBehaviour
         if (rdm > 0)
         {
             rdm -= Time.deltaTime;
-            Debug.Log(rdm);
+            Debug.Log("random tick" + rdm);
         }
         else
         {
@@ -74,7 +74,7 @@ public class Baby : MonoBehaviour
         if (hgt > 0)
         {
             hgt -= Time.deltaTime;
-            Debug.Log(hgt);
+            Debug.Log("hunger tick" + hgt);
         }
         else
         {
@@ -95,7 +95,7 @@ public class Baby : MonoBehaviour
         if (hyt > 0)
         {
             hyt -= Time.deltaTime;
-            Debug.Log(hyt);
+            Debug.Log("happy tick" + hyt);
         }
         else
         {

@@ -24,6 +24,7 @@ public class Manager : MonoBehaviour
     public static bool salaryDown;
 
     public GameObject wRandom;
+    public GameObject wRandomPicked;
     public GameObject wJob;
 
     private void Update()
@@ -40,6 +41,7 @@ public class Manager : MonoBehaviour
         wRandom.SetActive(false);
         wJob.SetActive(false); 
         wConfirm.SetActive(false);
+        wRandomPicked.SetActive(false);
     }
     public void work()
     {
@@ -116,6 +118,9 @@ public class Manager : MonoBehaviour
         baby.happinessUI[4].SetActive(true);
         baby.happiness = 5;
         salaryDown = true;
+        wConfirm.SetActive(true);
+        plusTxt.text = "Baby is happy!";
+        minusTxt.text = "Salary is cut in half!";
     }
     public void cracker()
     {
@@ -144,6 +149,7 @@ public class Manager : MonoBehaviour
             wConfirm.SetActive(true);
             plusTxt.text = "Baby hunger increased by 2!";
             minusTxt.text = "You used $" + cost + "\n" + "Money left: $ " + money.ToString();
+            Debug.Log("Bought baby food");
         }
     }
     public void bbFormula()
@@ -160,7 +166,7 @@ public class Manager : MonoBehaviour
             hg();
             hg();
             wConfirm.SetActive(true);
-            plusTxt.text = "Baby hunger increased by 5!";
+            plusTxt.text = "Baby hunger is full!";
             minusTxt.text = "You used $" + cost + "\n" + "Money left: $ " + money.ToString();
         }
     }
@@ -173,6 +179,9 @@ public class Manager : MonoBehaviour
         {
             money -= cost;
             hp();
+            wConfirm.SetActive(true);
+            plusTxt.text = "Baby health increased by 1!";
+            minusTxt.text = "You used $" + cost + "\n" + "Money left: $ " + money.ToString();
         }
     }
     public void dctrConsul()
@@ -185,6 +194,9 @@ public class Manager : MonoBehaviour
             money -= cost;
             hp();
             hp();
+            wConfirm.SetActive(true);
+            plusTxt.text = "Baby health increased by 2!";
+            minusTxt.text = "You used $" + cost + "\n" + "Money left: $ " + money.ToString();
         }
     }
     public void checkUp()
@@ -200,6 +212,9 @@ public class Manager : MonoBehaviour
             hp();
             hp();
             hp();
+            wConfirm.SetActive(true);
+            plusTxt.text = "Baby health is full!";
+            minusTxt.text = "You used $" + cost + "\n" + "Money left: $ " + money.ToString();
         }
     }
     public void paddle()
@@ -211,6 +226,9 @@ public class Manager : MonoBehaviour
         {
             money -= cost;
             hy();
+            wConfirm.SetActive(true);
+            plusTxt.text = "Baby happiness increased by 1!";
+            minusTxt.text = "You used $" + cost + "\n" + "Money left: $ " + money.ToString();
         }
     }
     public void plushie()
@@ -223,6 +241,9 @@ public class Manager : MonoBehaviour
             money -= cost;
             hy();
             hy();
+            wConfirm.SetActive(true);
+            plusTxt.text = "Baby happiness increased by 2!";
+            minusTxt.text = "You used $" + cost + "\n" + "Money left: $ " + money.ToString();
         }
     }
     public void ToGarbage()
@@ -232,5 +253,15 @@ public class Manager : MonoBehaviour
     public void ToFastFood()
     {
         SceneManager.LoadScene("FastFood");
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene("Reworked");
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

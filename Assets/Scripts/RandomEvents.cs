@@ -11,6 +11,8 @@ public class RandomEvents : MonoBehaviour
     public TextMeshProUGUI eventTxt;
     public TextMeshProUGUI aBtn;
     public TextMeshProUGUI bBtn;
+    public GameObject randomPanel;
+    public GameObject pickedPanel;
     private int rdmEv;
     private string[,] events = new string[8,3]
         {
@@ -48,12 +50,14 @@ public class RandomEvents : MonoBehaviour
         {
             baby.health--;
             baby.healthUI[4 - baby.health].SetActive(false);
-            gameObject.SetActive(false);
+            randomPanel.SetActive(false);
+            pickedPanel.SetActive(true);
+            Time.timeScale = 1;
         }
         else 
         {
             gameObject.SetActive(false);
+            Time.timeScale = 1;
         }
-        Time.timeScale= 1;
     }
 }
