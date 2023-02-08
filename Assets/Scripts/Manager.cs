@@ -16,6 +16,9 @@ public class Manager : MonoBehaviour
     public GameObject wHealth;
     public GameObject wToy;
     public GameObject wSpecials;
+    public GameObject wConfirm;
+    public TextMeshProUGUI plusTxt;
+    public TextMeshProUGUI minusTxt;
     public TextMeshProUGUI moneyTxt;
     public static int money = 100;
     public static bool salaryDown;
@@ -25,7 +28,7 @@ public class Manager : MonoBehaviour
 
     private void Update()
     {
-        moneyTxt.text = "$" + money.ToString();
+        moneyTxt.text = money.ToString();
     }
     public void CloseWindow()
     {
@@ -36,6 +39,7 @@ public class Manager : MonoBehaviour
         wSpecials.SetActive(false);
         wRandom.SetActive(false);
         wJob.SetActive(false); 
+        wConfirm.SetActive(false);
     }
     public void work()
     {
@@ -122,6 +126,9 @@ public class Manager : MonoBehaviour
         {
             money -= cost;
             hg();
+            wConfirm.SetActive(true);
+            plusTxt.text = "Baby hunger increased by 1!";
+            minusTxt.text = "You used $" + cost + "\n" +  "Money left: $ " +money.ToString();
         }
     }
     public void bbFood()
@@ -134,6 +141,9 @@ public class Manager : MonoBehaviour
             money -= cost;
             hg();
             hg();
+            wConfirm.SetActive(true);
+            plusTxt.text = "Baby hunger increased by 2!";
+            minusTxt.text = "You used $" + cost + "\n" + "Money left: $ " + money.ToString();
         }
     }
     public void bbFormula()
@@ -149,6 +159,9 @@ public class Manager : MonoBehaviour
             hg();
             hg();
             hg();
+            wConfirm.SetActive(true);
+            plusTxt.text = "Baby hunger increased by 5!";
+            minusTxt.text = "You used $" + cost + "\n" + "Money left: $ " + money.ToString();
         }
     }
     public void panadol()
